@@ -35,7 +35,7 @@ const sleep = (sec = 0) => {
       const page = await browser.newPage();
       console.info(`Adding user ${i}`);
       await page.goto(
-        `https://rtc-test.cometchat.io/?sessionID=v1.eu.2063261e3e1a85eb.tt&username=user${i}&mode=SPOTLIGHT`,
+        `https://rtc-test.cometchat.io/?sessionID=v1.eu.2063261e3e1a85eb.bvkf-hnni-emfm&username=user${i}&mode=SPOTLIGHT`,
         { timeout: 0 }
       );
       await sleep(3);
