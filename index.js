@@ -6,8 +6,19 @@
 
 const puppeteer = require("puppeteer");
 
-const NO_OF_USERS = process.argv?.[2] ? parseInt(process.argv[2]) : 5;
-const NO_OF_MINS = process.argv?.[3] ? parseInt(process.argv[3]) : 5;
+let NO_OF_USERS = 5;
+let NO_OF_MINS = 5;
+
+process.argv.forEach(arg => {
+  if (/^-u\d{1,2}$/.test(arg)) {
+    NO_OF_USERS = parseInt(arg.replace("-u", ""));
+  } else if (/^-m\d{1,2}$/.test(arg)) {
+    NO_OF_MINS = parseInt(arg.replace("-m", ""));
+  }
+});
+
+console.log(`Running for ${NO_OF_USERS} users.`);
+console.log(`Running for ${NO_OF_MINS} minutes.`);
 
 const sleep = (sec = 0) => {
   return new Promise((res) => {
