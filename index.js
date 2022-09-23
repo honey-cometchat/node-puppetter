@@ -3,6 +3,7 @@
 // sudo apt-get install -y nodejs
 // sudo apt-get install chromium-browser
 // npm i -g pm2
+// git clone https://github.com/honey-cometchat/node-puppetter.git
 
 const puppeteer = require("puppeteer");
 
@@ -49,7 +50,7 @@ const sleep = (sec = 0) => {
       pages.push(page);
       console.info(`Adding user ${i}`);
       await page.goto(
-        `https://rtc-test.cometchat.io/?sessionID=v1.eu.2063261e3e1a85eb.bvkf-hnni-emfm&username=user${i}&mode=SPOTLIGHT`,
+        `https://rtc-stage.cometchat.io/?sessionID=v1.eu.2181929eb8d4d5fd.vijl-ykrt-krvd&username=user${i}&mode=SPOTLIGHT`,
         { timeout: 0 }
       );
       await sleep(3);
