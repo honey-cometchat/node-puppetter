@@ -60,6 +60,7 @@ const sleep = (sec = 0) => {
     await browser.close();
     process.exit(0);
   } catch (error) {
+    console.log(error);
     await browser.close();
     process.exit(0);
   }
