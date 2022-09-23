@@ -40,13 +40,13 @@ const sleep = (sec = 0) => {
       );
       await sleep(3);
     }
-    await sleep(10);
+    await sleep(20);
     for (let i = 0; i < NO_OF_MINS * 6; i++) {
-      const userIdAudio = Math.floor(Math.random() * NO_OF_USERS);
+      const userIdAudio = Math.floor(Math.random() * (NO_OF_USERS - 1));
       await browser.pages[userIdAudio].click("#audioButton");
       console.info(`Toggled audio for user ${userIdAudio}`);
       await sleep(5);
-      const userIdVideo = Math.floor(Math.random() * NO_OF_USERS);
+      const userIdVideo = Math.floor(Math.random() * (NO_OF_USERS - 1));
       await browser.pages[userIdVideo].click("#videoButton");
       console.info(`Toggled video for user ${userIdVideo}`);
       await sleep(5);
