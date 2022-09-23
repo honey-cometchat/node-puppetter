@@ -50,7 +50,7 @@ const sleep = (sec = 0) => {
       pages.push(page);
       console.info(`Adding user ${i}`);
       await page.goto(
-        `https://rtc-stage.cometchat.io/?sessionID=v1.eu.2181929eb8d4d5fd.vijl-ykrt-krvd&username=user${i}&mode=SPOTLIGHT`,
+        `https://rtc-test.cometchat.io/?sessionID=v1.eu.2063261e3e1a85eb.tt&username=user${i}&mode=SPOTLIGHT`,
         { timeout: 0 }
       );
       await sleep(3);
