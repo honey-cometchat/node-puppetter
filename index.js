@@ -8,7 +8,7 @@
 const puppeteer = require("puppeteer");
 
 let NO_OF_USERS = 5;
-let NO_OF_MINS = 5;
+let NO_OF_MINS = 30;
 
 process.argv.forEach(arg => {
   if (/^u\d{1,2}$/.test(arg)) {
