@@ -30,7 +30,7 @@ const sleep = (sec = 0) => {
       for (let i = 0; i < NO_OF_USERS; i++) {
         const page = await browser.newPage()
         console.info(`Adding user ${i}`);
-        await page.goto(`https://rtc-test.cometchat.io/?sessionID=test&username=user${i}&mode=SPOTLIGHT`, {timeout: 0});
+        await page.goto(`https://rtc-stage.cometchat.io/?sessionID=v1.eu.2181929eb8d4d5fd.tt&username=user${i}&mode=SPOTLIGHT`, {timeout: 0});
         await sleep(3);
       }
       await sleep(10);
