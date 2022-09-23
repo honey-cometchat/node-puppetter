@@ -1,7 +1,8 @@
-// sudo apt-get update -y
+// sudo apt-get update
 // curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 // sudo apt-get install -y nodejs
 // sudo apt-get install chromium-browser
+// npm i -g pm2
 
 const puppeteer = require("puppeteer");
 
