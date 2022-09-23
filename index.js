@@ -6,14 +6,14 @@
 
 const puppeteer = require("puppeteer");
 
-let NO_OF_USERS = 5;
-let NO_OF_MINS = 5;
+let NO_OF_USERS = 10;
+let NO_OF_MINS = 10;
 
 process.argv.forEach(arg => {
-  if (/^-u\d{1,2}$/.test(arg)) {
-    NO_OF_USERS = parseInt(arg.replace("-u", ""));
-  } else if (/^-m\d{1,2}$/.test(arg)) {
-    NO_OF_MINS = parseInt(arg.replace("-m", ""));
+  if (/^u\d{1,2}$/.test(arg)) {
+    NO_OF_USERS = parseInt(arg.replace("u", ""));
+  } else if (/^m\d{1,2}$/.test(arg)) {
+    NO_OF_MINS = parseInt(arg.replace("m", ""));
   }
 });
 
