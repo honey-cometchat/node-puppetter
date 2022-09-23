@@ -31,8 +31,10 @@ const sleep = (sec = 0) => {
     process.exit(0);
   });
   try {
+    const pages = [];
     for (let i = 0; i < NO_OF_USERS; i++) {
       const page = await browser.newPage();
+      pages.push(page);
       console.info(`Adding user ${i}`);
       await page.goto(
         `https://rtc-test.cometchat.io/?sessionID=v1.eu.2063261e3e1a85eb.bvkf-hnni-emfm&username=user${i}&mode=SPOTLIGHT`,
@@ -43,16 +45,16 @@ const sleep = (sec = 0) => {
     await sleep(20);
     for (let i = 0; i < NO_OF_MINS * 6; i++) {
       const userIdAudio = Math.floor(Math.random() * (NO_OF_USERS - 1));
-      await browser.pages[userIdAudio].click("#audioButton");
+      await pages[userIdAudio].click("#audioButton");
       console.info(`Toggled audio for user ${userIdAudio}`);
       await sleep(5);
       const userIdVideo = Math.floor(Math.random() * (NO_OF_USERS - 1));
-      await browser.pages[userIdVideo].click("#videoButton");
+      await pages[userIdVideo].click("#videoButton");
       console.info(`Toggled video for user ${userIdVideo}`);
       await sleep(5);
     }
-    for (let i = 0; i < browser.pages.length; i++) {
-      const page = browser.pages[i];
+    for (let i = 0; i < pages.length; i++) {
+      const page = pages[i];
       await page.close();
       await sleep(1);
     }
