@@ -34,6 +34,8 @@ const sleep = (sec = 0) => {
     args: [
       "--use-fake-ui-for-media-stream",
       "--use-fake-device-for-media-stream",
+      // "--use-file-for-fake-video-capture=C:\\Users\\honey\\Desktop\\comet-chat\\puppeter-video-stream\\webcam-video.mjpeg",
+      String.raw`--use-file-for-fake-audio-capture=${__dirname}/assets/mic-audio.wav`,
       "--no-sandbox",
     ],
     executablePath: "/usr/bin/chromium-browser",
