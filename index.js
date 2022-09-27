@@ -35,7 +35,7 @@ const sleep = (sec = 0) => {
       "--use-fake-ui-for-media-stream",
       "--use-fake-device-for-media-stream",
       // "--use-file-for-fake-video-capture=C:\\Users\\honey\\Desktop\\comet-chat\\puppeter-video-stream\\webcam-video.mjpeg",
-      String.raw`--use-file-for-fake-audio-capture=${__dirname}/assets/mic-audio.wav`,
+      String.raw`--use-file-for-fake-audio-capture=${__dirname}/assets/${Math.random() > 0.5 ? "dominant-speaker-male": "dominant-speaker-female"}.wav`,
       "--no-sandbox",
     ],
     executablePath: "/usr/bin/chromium-browser",
@@ -63,10 +63,12 @@ const sleep = (sec = 0) => {
         const userIdAudio = Math.floor(Math.random() * (NO_OF_USERS - 1));
         await pages[userIdAudio].click("#audioButton");
         console.info(`Toggled audio for user ${userIdAudio}`);
+        await sleep(50);
+        await pages[userIdAudio].click("#audioButton");
       } catch (error) {
         console.log(error);
       }
-      await sleep(30);
+      await sleep(5);
       try {
         const userIdVideo = Math.floor(Math.random() * (NO_OF_USERS - 1));
         await pages[userIdVideo].click("#videoButton");
@@ -74,7 +76,7 @@ const sleep = (sec = 0) => {
       } catch (error) {
         console.log(error);
       }
-      await sleep(30);
+      await sleep(5);
     }
     for (let i = 0; i < pages.length; i++) {
       const page = pages[i];
