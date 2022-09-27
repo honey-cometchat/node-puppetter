@@ -7,10 +7,10 @@
 
 const puppeteer = require("puppeteer");
 
-let NO_OF_USERS = 5;
+let NO_OF_USERS = 20;
 let NO_OF_MINS = 60;
 
-process.argv.forEach(arg => {
+process.argv.forEach((arg) => {
   if (/^u\d{1,2}$/.test(arg)) {
     NO_OF_USERS = parseInt(arg.replace("u", ""));
   } else if (/^m\d{1,2}$/.test(arg)) {
@@ -20,6 +20,17 @@ process.argv.forEach(arg => {
 
 console.log(`Running for ${NO_OF_USERS} users.`);
 console.log(`Running for ${NO_OF_MINS} minutes.`);
+
+function makeid(length) {
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
 
 const sleep = (sec = 0) => {
   return new Promise((res) => {
@@ -35,7 +46,11 @@ const sleep = (sec = 0) => {
       "--use-fake-ui-for-media-stream",
       "--use-fake-device-for-media-stream",
       // "--use-file-for-fake-video-capture=C:\\Users\\honey\\Desktop\\comet-chat\\puppeter-video-stream\\webcam-video.mjpeg",
-      String.raw`--use-file-for-fake-audio-capture=${__dirname}/assets/${Math.random() > 0.5 ? "dominant-speaker-male": "dominant-speaker-female"}.wav`,
+      String.raw`--use-file-for-fake-audio-capture=${__dirname}/assets/${
+        Math.random() > 0.5
+          ? "dominant-speaker-male"
+          : "dominant-speaker-female"
+      }.wav`,
       "--no-sandbox",
     ],
     executablePath: "/usr/bin/chromium-browser",
@@ -52,7 +67,7 @@ const sleep = (sec = 0) => {
       pages.push(page);
       console.info(`Adding user ${i}`);
       await page.goto(
-        `https://rtc-test.cometchat.io/?sessionID=v1.eu.2063261e3e1a85eb.ttt&username=user${i}&mode=SPOTLIGHT&isAudioOnly=false`,
+        `https://rtc-test.cometchat.io/?sessionID=v1.eu.2063261e3e1a85eb.ttt&username=user${makeid(5)}&mode=SPOTLIGHT&isAudioOnly=false`,
         { timeout: 0 }
       );
       await sleep(3);
