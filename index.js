@@ -7,8 +7,8 @@
 
 const puppeteer = require("puppeteer");
 
-let NO_OF_USERS = 15;
-let NO_OF_MINS = 60;
+let NO_OF_USERS = 10;
+let NO_OF_MINS = 120;
 
 process.argv.forEach((arg) => {
   if (/^u\d{1,2}$/.test(arg)) {
@@ -72,7 +72,7 @@ const sleep = (sec = 0) => {
       );
       await sleep(3);
     }
-    await sleep(20);
+    await sleep(10);
     for (let i = 0; i < NO_OF_MINS; i++) {
       try {
         const userIdAudio = Math.floor(Math.random() * (NO_OF_USERS - 1));
