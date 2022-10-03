@@ -7,8 +7,8 @@
 
 const puppeteer = require("puppeteer");
 
-let NO_OF_USERS = 10;
-let NO_OF_MINS = 120;
+let NO_OF_USERS = 8;
+let NO_OF_MINS = 360;
 
 process.argv.forEach((arg) => {
   if (/^u\d{1,2}$/.test(arg)) {
@@ -67,7 +67,7 @@ const sleep = (sec = 0) => {
       pages.push(page);
       console.info(`Adding user ${i}`);
       await page.goto(
-        `https://rtc-test.cometchat.io/?sessionID=v1.eu.2063261e3e1a85eb.ttt&username=user${makeid(5)}&mode=SPOTLIGHT&isAudioOnly=false`,
+        `https://rtc-test.cometchat.io/?sessionID=v1.eu.2063261e3e1a85eb.zkme-hhtx-ztxp&username=user${makeid(5)}&mode=SPOTLIGHT&isAudioOnly=false`,
         { timeout: 0 }
       );
       await sleep(3);
@@ -76,10 +76,14 @@ const sleep = (sec = 0) => {
     for (let i = 0; i < NO_OF_MINS; i++) {
       try {
         const userIdAudio = Math.floor(Math.random() * (NO_OF_USERS - 1));
-        await pages[userIdAudio].click("#audioButton");
-        console.info(`Toggled audio for user ${userIdAudio}`);
-        await sleep(50);
-        await pages[userIdAudio].click("#audioButton");
+        if (Math.floor(Math.random() * 10) === 5) {
+          await pages[userIdAudio].click("#audioButton");
+          console.info(`Toggled audio for user ${userIdAudio}`);
+          await sleep(50);
+          await pages[userIdAudio].click("#audioButton");
+        } else {
+          await sleep(50);
+        }
       } catch (error) {
         console.log(error);
       }
