@@ -88,13 +88,13 @@ const sleep = (sec = 0) => {
         console.log(error);
       }
       await sleep(5);
-      try {
-        const userIdVideo = Math.floor(Math.random() * (NO_OF_USERS - 1));
-        await pages[userIdVideo].click("#videoButton");
-        console.info(`Toggled video for user ${userIdVideo}`);
-      } catch (error) {
-        console.log(error);
-      }
+      // try {
+      //   const userIdVideo = Math.floor(Math.random() * (NO_OF_USERS - 1));
+      //   await pages[userIdVideo].click("#videoButton");
+      //   console.info(`Toggled video for user ${userIdVideo}`);
+      // } catch (error) {
+      //   console.log(error);
+      // }
       await sleep(5);
     }
     for (let i = 0; i < pages.length; i++) {
