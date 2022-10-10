@@ -7,7 +7,7 @@
 
 const puppeteer = require("puppeteer");
 
-let NO_OF_USERS = 8;
+let NO_OF_USERS = 5;
 let NO_OF_MINS = 360;
 
 process.argv.forEach((arg) => {
